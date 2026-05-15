@@ -1,0 +1,300 @@
+{% extends "base.html" %}
+
+{% block meta %}
+<meta name="description" content="Universal Study Hub — Free CGPA to GPA converter, Pomodoro focus timer, and study streak tracker for students applying to universities worldwide.">
+<meta name="keywords" content="CGPA to GPA converter, 10 point CGPA to 4.0 GPA, Pomodoro timer, study tools, MS application, grade converter">
+<link rel="canonical" href="https://universalstudyhub.com/">
+<meta property="og:title" content="Universal Study Hub — Grade Converter & Focus Timer">
+<meta property="og:description" content="Convert Indian CGPA to US GPA, stay focused with Pomodoro, and track your study streaks.">
+<meta property="og:type" content="website">
+{% endblock %}
+
+{% block title %}Universal Study Hub — Free Grade Converter & Pomodoro Timer{% endblock %}
+
+{% block content %}
+
+<!-- ═══════ HERO ═══════ -->
+<section class="relative overflow-hidden py-16 sm:py-24 px-4">
+    <div class="hero-blob hero-blob--1"></div>
+    <div class="hero-blob hero-blob--2"></div>
+    <div class="max-w-4xl mx-auto text-center relative z-10 fade-in-up">
+        <span class="section-tag mb-4 inline-block">🎓 Free Student Tools</span>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-6">
+            Your <span class="gradient-text">Universal</span><br>Study Hub
+        </h1>
+        <p class="text-lg sm:text-xl text-gray-500 dark:text-gray-400 max-w-2xl mx-auto leading-relaxed">
+            Convert grades across international scales, stay laser-focused with Pomodoro, and build unstoppable study streaks — all in one place.
+        </p>
+        <div class="flex flex-wrap gap-3 justify-center mt-8">
+            <a href="#converter" class="btn-primary">Convert Grade →</a>
+            <a href="#timer" class="btn-secondary">Start Timer</a>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════ GRADE CONVERTER ═══════ -->
+<section id="converter" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+    <div class="text-center mb-10 fade-in-up">
+        <span class="section-tag">📊 Grade Converter</span>
+        <h2 class="text-3xl font-bold mt-3">Universal Grade Converter</h2>
+        <p class="text-gray-500 dark:text-gray-400 mt-2 max-w-xl mx-auto">Instantly convert between Indian CGPA, US GPA, and percentage scales.</p>
+    </div>
+    <div class="grid lg:grid-cols-5 gap-6 items-start">
+        <!-- Converter Card -->
+        <div class="lg:col-span-3 glass-card p-6 sm:p-8 fade-in-up">
+            <div class="grid sm:grid-cols-2 gap-4 mb-4">
+                <div>
+                    <label for="from-scale" class="block text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1.5">From Scale</label>
+                    <select id="from-scale" class="input-field">
+                        <option value="10-point">10-Point CGPA (India)</option>
+                        <option value="percentage">Percentage (%)</option>
+                        <option value="4.0-gpa">4.0 GPA (US)</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="to-scale" class="block text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1.5">To Scale</label>
+                    <select id="to-scale" class="input-field">
+                        <option value="percentage">Percentage (%)</option>
+                        <option value="4.0-gpa">4.0 GPA (US)</option>
+                        <option value="10-point">10-Point CGPA</option>
+                    </select>
+                </div>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4 mb-6">
+                <div>
+                    <label for="grade-value" class="block text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1.5">Your Grade / CGPA</label>
+                    <input type="number" id="grade-value" class="input-field" placeholder="e.g. 8.5" step="0.01" min="0" max="100">
+                </div>
+                <div>
+                    <label for="multiplier" class="block text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-1.5">Custom Multiplier <span class="text-gray-300 dark:text-gray-600">(optional)</span></label>
+                    <input type="number" id="multiplier" class="input-field" placeholder="Default: 9.5" step="0.01">
+                </div>
+            </div>
+            <button id="convert-btn" class="btn-primary w-full text-base">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/></svg>
+                Convert Now
+            </button>
+            <!-- Result -->
+            <div id="converter-result" class="mt-6 text-center hidden">
+                <p class="text-sm text-gray-400 mb-2">Result</p>
+                <div id="result-badge" class="result-badge mx-auto"></div>
+                <p id="result-label" class="text-sm text-gray-500 dark:text-gray-400 mt-2"></p>
+                <p id="result-letter" class="text-xs text-gray-400 mt-1"></p>
+            </div>
+        </div>
+
+        <!-- Sidebar: Quick Reference + Ad -->
+        <div class="lg:col-span-2 space-y-6 fade-in-up fade-in-up-delay-1">
+            <div class="glass-card p-6">
+                <h3 class="font-bold text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-4">Quick Reference</h3>
+                <div class="space-y-3 text-sm">
+                    <div class="flex justify-between items-center py-2 border-b border-gray-100 dark:border-gray-700/50">
+                        <span class="text-gray-600 dark:text-gray-300">9.0+ CGPA</span>
+                        <span class="font-bold text-brand-600 dark:text-brand-400">3.7 – 4.0 GPA</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2 border-b border-gray-100 dark:border-gray-700/50">
+                        <span class="text-gray-600 dark:text-gray-300">8.0 – 8.9</span>
+                        <span class="font-bold text-brand-600 dark:text-brand-400">3.3 – 3.7 GPA</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2 border-b border-gray-100 dark:border-gray-700/50">
+                        <span class="text-gray-600 dark:text-gray-300">7.0 – 7.9</span>
+                        <span class="font-bold text-brand-600 dark:text-brand-400">3.0 – 3.3 GPA</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2 border-b border-gray-100 dark:border-gray-700/50">
+                        <span class="text-gray-600 dark:text-gray-300">6.0 – 6.9</span>
+                        <span class="font-bold text-brand-600 dark:text-brand-400">2.5 – 3.0 GPA</span>
+                    </div>
+                    <div class="flex justify-between items-center py-2">
+                        <span class="text-gray-600 dark:text-gray-300">Below 6.0</span>
+                        <span class="font-bold text-gray-400">Below 2.5</span>
+                    </div>
+                </div>
+            </div>
+            <!-- Sidebar Ad Slot -->
+            <div class="ad-banner p-4" id="ad-sidebar">
+                <span>— Advertisement —</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════ POMODORO TIMER ═══════ -->
+<section id="timer" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+    <div class="text-center mb-10 fade-in-up">
+        <span class="section-tag">⏱️ Focus Timer</span>
+        <h2 class="text-3xl font-bold mt-3">Pomodoro Focus Timer</h2>
+        <p class="text-gray-500 dark:text-gray-400 mt-2">Pick a preset or set your own. Stay focused, stay productive.</p>
+    </div>
+    <div class="grid lg:grid-cols-5 gap-6 items-start">
+        <!-- Timer Card -->
+        <div class="lg:col-span-3 glass-card p-6 sm:p-8 text-center fade-in-up">
+            <!-- Presets -->
+            <div class="flex flex-wrap justify-center gap-2 mb-8">
+                <button class="preset-chip preset-chip--active" data-minutes="25" id="preset-25">25 min</button>
+                <button class="preset-chip" data-minutes="50" id="preset-50">50 min</button>
+                <button class="preset-chip" data-minutes="90" id="preset-90">90 min</button>
+                <button class="preset-chip" data-minutes="custom" id="preset-custom">Custom</button>
+            </div>
+            <div id="custom-input-wrap" class="hidden mb-6">
+                <input type="number" id="custom-minutes" class="input-field max-w-[140px] mx-auto text-center" placeholder="Minutes" min="1" max="180">
+            </div>
+
+            <!-- Timer Ring -->
+            <div class="timer-ring mb-6" id="timer-ring">
+                <svg width="100%" height="100%" viewBox="0 0 260 260">
+                    <defs>
+                        <linearGradient id="timerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#6366f1"/>
+                            <stop offset="100%" stop-color="#a855f7"/>
+                        </linearGradient>
+                    </defs>
+                    <circle class="timer-ring__bg" cx="130" cy="130" r="115" fill="none" stroke-width="10"/>
+                    <circle class="timer-ring__progress" id="timer-progress" cx="130" cy="130" r="115" fill="none" stroke-width="10" stroke-dasharray="722.57" stroke-dashoffset="0"/>
+                </svg>
+                <div class="timer-display">
+                    <span class="timer-display__time text-gray-900 dark:text-white" id="timer-time">25:00</span>
+                    <span class="text-xs text-gray-400 mt-1 font-medium uppercase tracking-wide" id="timer-status">Ready</span>
+                </div>
+            </div>
+
+            <!-- Controls -->
+            <div class="flex justify-center gap-3">
+                <button id="timer-start" class="btn-primary px-6">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M6.3 2.84A1.5 1.5 0 004 4.11v11.78a1.5 1.5 0 002.3 1.27l9.344-5.891a1.5 1.5 0 000-2.538L6.3 2.841z"/></svg>
+                    Start
+                </button>
+                <button id="timer-pause" class="btn-secondary px-6 hidden">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M5.75 3a.75.75 0 00-.75.75v12.5c0 .414.336.75.75.75h1.5a.75.75 0 00.75-.75V3.75A.75.75 0 007.25 3h-1.5zM12.75 3a.75.75 0 00-.75.75v12.5c0 .414.336.75.75.75h1.5a.75.75 0 00.75-.75V3.75a.75.75 0 00-.75-.75h-1.5z"/></svg>
+                    Pause
+                </button>
+                <button id="timer-resume" class="btn-primary px-6 hidden">Resume</button>
+                <button id="timer-reset" class="btn-secondary px-6">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182"/></svg>
+                    Reset
+                </button>
+            </div>
+        </div>
+
+        <!-- Streak Card -->
+        <div class="lg:col-span-2 space-y-6 fade-in-up fade-in-up-delay-1">
+            <div class="glass-card p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="font-bold text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400">🔥 Study Streak</h3>
+                    <span class="text-2xl font-black text-brand-600 dark:text-brand-400" id="streak-count">0</span>
+                </div>
+                <p class="text-xs text-gray-400 mb-4">Last 28 days — each cell represents a day</p>
+                <div class="streak-grid" id="streak-grid">
+                    <!-- JS fills 28 cells -->
+                </div>
+                <div class="flex items-center gap-2 mt-3 text-xs text-gray-400">
+                    <span>Less</span>
+                    <span class="w-3 h-3 rounded streak-cell"></span>
+                    <span class="w-3 h-3 rounded streak-cell--level-1"></span>
+                    <span class="w-3 h-3 rounded streak-cell--level-2"></span>
+                    <span class="w-3 h-3 rounded streak-cell--level-3"></span>
+                    <span class="w-3 h-3 rounded streak-cell--level-4"></span>
+                    <span>More</span>
+                </div>
+            </div>
+
+            <!-- Stats -->
+            <div class="glass-card p-6">
+                <h3 class="font-bold text-sm uppercase tracking-wide text-gray-500 dark:text-gray-400 mb-4">📈 Session Stats</h3>
+                <div class="space-y-3">
+                    <div class="flex justify-between">
+                        <span class="text-sm text-gray-500 dark:text-gray-400">Today</span>
+                        <span class="text-sm font-bold" id="stat-today">0 sessions</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-sm text-gray-500 dark:text-gray-400">This Week</span>
+                        <span class="text-sm font-bold" id="stat-week">0 sessions</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-sm text-gray-500 dark:text-gray-400">Total Focus</span>
+                        <span class="text-sm font-bold" id="stat-total">0 min</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-sm text-gray-500 dark:text-gray-400">Last Grade</span>
+                        <span class="text-sm font-bold" id="stat-last-grade">—</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════ MID-ARTICLE AD ═══════ -->
+<div class="max-w-4xl mx-auto px-4 mb-12">
+    <div class="ad-banner p-6" id="ad-mid-article">
+        <span>— Advertisement —</span>
+    </div>
+</div>
+
+<!-- ═══════ SEO ARTICLE ═══════ -->
+<section id="article" class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
+    <div class="text-center mb-10 fade-in-up">
+        <span class="section-tag">📝 Expert Guide</span>
+    </div>
+    <article class="prose max-w-none glass-card p-6 sm:p-10 fade-in-up">
+
+        <h2>How to Convert an Indian 10-Point CGPA to a US 4.0 GPA for MS Applications</h2>
+
+        <p>If you are an Indian student planning to pursue a Master of Science (MS) degree in the United States, one of the most confusing parts of the application process is converting your Indian Cumulative Grade Point Average (CGPA) into the American 4.0 GPA scale. Universities in India typically use a 10-point grading system, while American universities operate on a 4.0 scale. Understanding how this conversion works — and getting it right — can significantly impact your admission prospects and scholarship eligibility.</p>
+
+        <h3>Understanding the Indian 10-Point CGPA System</h3>
+
+        <p>Most major Indian universities, including those affiliated with AICTE, VTU, Anna University, and Mumbai University, follow a 10-point CGPA system. In this system, a student's performance in each course is graded on a scale of 0 to 10, and the CGPA is the weighted average of all course grades. A CGPA of 10.0 represents a perfect academic record, while a 6.0 is generally considered the minimum pass standard for many postgraduate applications.</p>
+
+        <p>It is important to note that the exact grading criteria — what constitutes an "A" grade or how credits are weighted — can differ significantly between universities. This variability makes direct conversion challenging and is why many US universities and credential evaluators use standardized formulas rather than relying on university-specific interpretations.</p>
+
+        <h3>The Standard CGPA-to-Percentage Formula</h3>
+
+        <p>The most widely used formula for converting a 10-point CGPA to a percentage is the one recommended by many Indian universities, including some IITs:</p>
+
+        <p><strong>Percentage = CGPA × 9.5</strong></p>
+
+        <p>For example, if your CGPA is 8.2, your equivalent percentage would be 8.2 × 9.5 = <strong>77.9%</strong>. Some universities use a multiplier of 10, making the calculation even simpler (CGPA × 10), but 9.5 is the more conservative and commonly accepted multiplier. Always check your university's official transcript or grading policy to see if they recommend a specific conversion factor, and use that value in our converter above by entering it in the "Custom Multiplier" field.</p>
+
+        <h3>Converting Percentage to the US 4.0 GPA Scale</h3>
+
+        <p>Once you have your percentage, the next step is converting it to the 4.0 GPA scale used by American universities. While there is no single universally accepted conversion table, the World Education Services (WES) mapping is one of the most trusted standards, especially for international applicants. The approximate WES-style mapping is as follows:</p>
+
+        <ul>
+            <li><strong>90% and above</strong> → 4.0 GPA (A+/A)</li>
+            <li><strong>80% – 89%</strong> → 3.5 – 3.9 GPA (A-/B+)</li>
+            <li><strong>70% – 79%</strong> → 3.0 – 3.4 GPA (B+/B)</li>
+            <li><strong>60% – 69%</strong> → 2.5 – 2.9 GPA (B-/C+)</li>
+            <li><strong>50% – 59%</strong> → 2.0 – 2.4 GPA (C/C-)</li>
+            <li><strong>Below 50%</strong> → Below 2.0 (D/F)</li>
+        </ul>
+
+        <p>Using our earlier example of 77.9%, this maps to approximately <strong>3.4 GPA</strong> on the US 4.0 scale — a competitive score for many mid-tier to high-tier MS programs in STEM fields.</p>
+
+        <h3>Do US Universities Accept Self-Converted GPAs?</h3>
+
+        <p>This is a critical question many applicants overlook. Most top-tier universities, including MIT, Stanford, and Carnegie Mellon, <strong>do not require you to convert your GPA yourself</strong>. Instead, they prefer you to submit your original transcript and let their admissions committees or third-party evaluators (like WES or ECE) handle the conversion. However, many application portals still ask you to enter a GPA on a 4.0 scale, which is where a reliable converter like the one on this page becomes invaluable.</p>
+
+        <p>If a university explicitly asks for a WES evaluation, you will need to go through the official WES process, which involves sending your transcripts to WES for a detailed credential evaluation report. This typically costs around $160–$200 USD and takes 2–3 weeks. The advantage is that a WES-evaluated GPA carries significant credibility with admissions committees.</p>
+
+        <h3>Tips for Maximizing Your Converted GPA</h3>
+
+        <ol>
+            <li><strong>Use your university's official multiplier.</strong> If your university states a specific CGPA-to-percentage conversion factor on the transcript, always use that. It adds credibility.</li>
+            <li><strong>Highlight your class rank.</strong> If your CGPA seems low after conversion but you ranked in the top 10% of your class, mention this prominently in your Statement of Purpose (SOP).</li>
+            <li><strong>Supplement with GRE scores.</strong> A strong GRE score (320+) can offset a slightly lower GPA and demonstrate your quantitative and verbal abilities independently of your undergraduate grading system.</li>
+            <li><strong>Get a WES evaluation early.</strong> The process takes time, and many fall deadlines are in December. Start your WES application by September to avoid delays.</li>
+            <li><strong>Focus on relevant coursework.</strong> Some programs look at your GPA in core subjects (like Computer Science courses for an MS in CS) rather than your overall CGPA. If your major GPA is stronger, be sure to calculate and highlight it separately.</li>
+        </ol>
+
+        <h3>Common Mistakes to Avoid</h3>
+
+        <p>Many students make the error of inflating their converted GPA by using a non-standard formula or rounding aggressively. This is a serious red flag for admissions committees and can result in application rejection. Always use a conservative, well-documented conversion method. Another common mistake is assuming that all Indian universities use the same grading scale — they do not. A 7.0 CGPA from an IIT may be evaluated very differently from a 7.0 from a state university, because admissions committees are aware of the varying academic rigor across institutions.</p>
+
+        <h3>Conclusion</h3>
+
+        <p>Converting your Indian 10-point CGPA to a US 4.0 GPA does not have to be intimidating. By understanding the standard formulas, using reliable tools like our Universal Grade Converter above, and supplementing your application with strong test scores and research experience, you can present a compelling academic profile to any American university. Start your conversion now using our free tool at the top of this page, save your results, and use the Pomodoro Timer below to stay focused on your application essays.</p>
+
+    </article>
+</section>
+
+{% endblock %}

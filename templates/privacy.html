@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% block meta %}
+<meta name="description" content="Privacy Policy for Universal Study Hub — Learn how we handle your data with zero external databases.">
+{% endblock %}
+{% block title %}Privacy Policy — Universal Study Hub{% endblock %}
+{% block content %}
+<section class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="glass-card p-6 sm:p-10 fade-in-up prose max-w-none">
+        <h1 class="text-3xl font-bold mb-2">Privacy Policy</h1>
+        <p class="text-sm text-gray-400 mb-8">Last updated: May 15, 2026</p>
+
+        <h2>1. Introduction</h2>
+        <p>Welcome to Universal Study Hub ("we," "our," or "us"). We respect your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your information when you visit our website.</p>
+
+        <h2>2. Information We Collect</h2>
+        <p>Universal Study Hub is designed with a <strong>zero-database architecture</strong>. We do not operate any external databases (SQLite, PostgreSQL, MongoDB, or otherwise). All user-generated data — including study session records, streak data, and last calculated grades — is stored exclusively in your browser's <strong>localStorage</strong> and never leaves your device.</p>
+        <h3>2.1 Automatically Collected Information</h3>
+        <p>When you visit our site, our hosting provider (Vercel) may automatically collect standard server logs, including your IP address, browser type, referring URL, and the pages you visit. This data is used solely for server operations and is governed by Vercel's privacy policy.</p>
+        <h3>2.2 Cookies</h3>
+        <p>We may use essential cookies for site functionality (such as theme preference). If we implement third-party advertising (e.g., Google AdSense), those services may set their own cookies. Please refer to Google's advertising privacy policies for more details.</p>
+
+        <h2>3. How We Use Your Information</h2>
+        <p>Any automatically collected information is used to: (a) maintain and improve our website, (b) monitor usage patterns and performance, and (c) ensure the security of our services. We do not sell, trade, or otherwise transfer your personally identifiable information to third parties.</p>
+
+        <h2>4. Third-Party Services</h2>
+        <p>Our website may contain links to third-party websites or integrate third-party services such as Google AdSense and Google Fonts. These services have their own privacy policies, and we encourage you to review them. We are not responsible for the privacy practices of third-party services.</p>
+
+        <h2>5. Data Security</h2>
+        <p>Since all personal data is stored locally on your device via localStorage, you maintain full control over your data. You can clear this data at any time by clearing your browser's local storage. We implement reasonable security measures on our server infrastructure to protect against unauthorized access.</p>
+
+        <h2>6. Children's Privacy</h2>
+        <p>Our service is intended for students of all ages. We do not knowingly collect personal information from children under 13. Since we do not collect or store any personal data on our servers, no child-specific data is at risk.</p>
+
+        <h2>7. Changes to This Policy</h2>
+        <p>We may update this Privacy Policy from time to time. Any changes will be posted on this page with an updated "Last updated" date. We encourage you to review this page periodically.</p>
+
+        <h2>8. Contact Us</h2>
+        <p>If you have questions about this Privacy Policy, please visit our <a href="/contact" class="text-brand-600 dark:text-brand-400 hover:underline">Contact Us</a> page.</p>
+    </div>
+</section>
+{% endblock %}
